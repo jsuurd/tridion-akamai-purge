@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceConfig ConnectionTimeout="30000" CacheEnabled="true" CacheExpirationDuration="600" ServiceAvailabilityCheck="true">
+    <DiscoveryService ServiceUri="http://WIN-N7FURIKM0TR:8182/discovery.svc"/>
+    <TokenService ClientId="cduser" ClientSecret="encrypted:o/cgCBwmULeOyUZghFaKJA=="/>
+</ServiceConfig>

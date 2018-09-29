@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration Version="8.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schemas/cd_storage_conf.xsd">
+
+    <Global>
+        <ObjectCache Enabled="false"/>
+        <Storages>
+            <Storage Type="filesystem" Class="com.tridion.storage.filesystem.FSDAOFactory" Id="defaultFile" defaultFilesystem="false">
+                <Root Path="C:\Temp" />
+            </Storage>
+            <Storage Type="filesystem" Class="com.tridion.storage.filesystem.FSDAOFactory" Id="defaultDataFile" defaultFilesystem="true" defaultStorage="true">
+                <Root Path="C:\Temp\Data" />
+            </Storage>
+        </Storages>
+    </Global>
+
+    <ItemTypes defaultStorageId="filesystem" cached="false"/>
+
+    <ConfigRepository ServiceUri="http://WIN-N7FURIKM0TR:8182/discovery.svc"
+        ConnectionTimeout="60000"
+        CacheEnabled="true"
+        CacheExpirationDuration="600"
+        ServiceMonitorPollDuration="10"
+        ClientId="cduser"
+        ClientSecret="encrypted:o/cgCBwmULeOyUZghFaKJA==">
+    </ConfigRepository>
+
+    <License Location="C:\Program Files\SDL Web\config\cd_licenses.xml"/>
+
+</Configuration>
