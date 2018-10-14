@@ -19,12 +19,23 @@ import org.suurd.akamai.ccu.client.model.v2.Type;
 import org.suurd.akamai.ccu.client.provider.ApacheHttpTransportProvider;
 import org.suurd.akamai.ccu.client.provider.ConfigurationProvider;
 
+/**
+ * Implementation of the <code>AkamaiCcuClientFacade</code> interface using the
+ * CCU V2 client.
+ * 
+ * @author jsuurd
+ */
 public class AkamaiCcuV2ClientFacade implements AkamaiCcuClientFacade {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AkamaiCcuV2ClientFacade.class);
 
 	private CcuClient ccuClient;
 
+	/**
+	 * Constructs an Akamai CCU V2 client facade with the specified configuration provider.
+	 * 
+	 * @param configurationProvider the configuration provider
+	 */
 	public AkamaiCcuV2ClientFacade(ConfigurationProvider configurationProvider) {
 		super();
 		

@@ -11,6 +11,12 @@ import org.suurd.tridion.content.client.model.WebResourceItem;
 import org.suurd.tridion.deployer.module.configuration.WebPurgeTypeConfiguration;
 import org.suurd.tridion.discovery.client.DiscoveryServiceClient;
 
+/**
+ * Implementation of the <code>PurgeUrlBuilder</code> interface that builds a
+ * list of URL's to purge formatted for a web application.
+ * 
+ * @author jsuurd
+ */
 public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WebPurgeUrlBuilder.class);
@@ -19,13 +25,21 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 
 	private DiscoveryServiceClient discoveryClientFacade;
 
+	/**
+	 * Constructs a web purge URL builder with the specified configuration and
+	 * discovery client facade.
+	 * 
+	 * @param configuration the configuration
+	 * @param discoveryClientFacade the discovery client facade
+	 */
 	public WebPurgeUrlBuilder(WebPurgeTypeConfiguration configuration, DiscoveryServiceClient discoveryClientFacade) {
 		super();
-		
+
 		this.configuration = configuration;
 		this.discoveryClientFacade = discoveryClientFacade;
 	}
 
+	@Override
 	public List<String> buildUrlsToPurge(int publicationId, List<WebResourceItem> publishedItems) {
 		List<String> baseUrls = discoveryClientFacade.getWebApplicationBaseUrls(publicationId);
 		filterBaseUrlsToExclude(baseUrls);
@@ -33,7 +47,7 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 			LOG.warn("No base URL mapping available for publication [publicationId={}]", publicationId);
 			return Collections.emptyList();
 		}
-		
+
 		return buildUrlsToPurge(baseUrls, publishedItems);
 	}
 
@@ -50,7 +64,7 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 
 	protected List<String> buildUrlsToPurge(List<String> baseUrls, List<WebResourceItem> publishedItems) {
 		List<String> urls = new ArrayList<>();
-		
+
 		String[] defaultPageExtensions = configuration.getDefaultPageExtensions();
 		for (WebResourceItem publishedItem : publishedItems) {
 			for (String baseUrl : baseUrls) {
@@ -65,7 +79,7 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 				}
 			}
 		}
-		
+
 		return urls;
 	}
 }

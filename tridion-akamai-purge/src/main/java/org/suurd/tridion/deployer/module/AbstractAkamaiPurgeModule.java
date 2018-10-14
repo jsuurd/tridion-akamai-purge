@@ -29,6 +29,12 @@ import com.tridion.deployer.Processor;
 import com.tridion.transport.transportpackage.TransportPackage;
 import com.tridion.util.TCMURI;
 
+/**
+ * Base class for SDL Deployer modules that will send purge requests to the
+ * Akamai Content Control Utility API.
+ * 
+ * @author jsuurd
+ */
 public abstract class AbstractAkamaiPurgeModule extends Module {
 
 	private ModuleConfiguration configuration;
@@ -43,6 +49,13 @@ public abstract class AbstractAkamaiPurgeModule extends Module {
 
 	private boolean isEnabled;
 
+	/**
+	 * Constructs an Akamai purge module with the specified configuration and processor.
+	 * 
+	 * @param config the configuration
+	 * @param processor the processor
+	 * @throws ConfigurationException if an error occurs processing the configuration
+	 */
 	public AbstractAkamaiPurgeModule(Configuration config, Processor processor) throws ConfigurationException {
 		super(config, processor);
 		
@@ -129,10 +142,27 @@ public abstract class AbstractAkamaiPurgeModule extends Module {
 		}
 	}
 
+	/**
+	 * Gets the list of published binaries for the specified transport package.
+	 * 
+	 * @param transportPackage the transport package
+	 * @return the list of published binaries
+	 */
 	protected abstract List<BinaryVariant> getPublishedBinaries(TransportPackage transportPackage);
 
+	/**
+	 * Gets the list of published pages for the specified transport package.
+	 * 
+	 * @param transportPackage the transport package
+	 * @return the list of published pages
+	 */
 	protected abstract List<Page> getPublishedPages(TransportPackage transportPackage);
 
+	/**
+	 * Returns the logger.
+	 * 
+	 * @return the logger
+	 */
 	protected abstract Logger log();
 
 }

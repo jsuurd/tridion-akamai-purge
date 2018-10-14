@@ -15,6 +15,12 @@ import com.tridion.transport.transportpackage.BinaryMetaData;
 import com.tridion.transport.transportpackage.PageMetaData;
 import com.tridion.transport.transportpackage.TransportPackage;
 
+/**
+ * SDL Deployer module which will send a purge request to the Akamai Content
+ * Control Utility API when deploying content.
+ * 
+ * @author jsuurd
+ */
 @SuppressWarnings("deprecation")
 public class AkamaiPurgeDeploy extends AbstractAkamaiPurgeModule {
 
@@ -24,10 +30,19 @@ public class AkamaiPurgeDeploy extends AbstractAkamaiPurgeModule {
 
 	private static final String METADATA_TYPE_BINARIES = "Binaries";
 
+	/**
+	 * Constructs an Akamai purge deploy module with the specified configuration and
+	 * processor.
+	 * 
+	 * @param config the configuration
+	 * @param processor the processor
+	 * @throws ConfigurationException if an error occurs processing the configuration
+	 */
 	public AkamaiPurgeDeploy(Configuration config, Processor processor) throws ConfigurationException {
 		super(config, processor);
 	}
 
+	@Override
 	protected List<BinaryVariant> getPublishedBinaries(TransportPackage transportPackage) {
 		List<BinaryVariant> publishedBinaries = new ArrayList<>();
 		
@@ -44,6 +59,7 @@ public class AkamaiPurgeDeploy extends AbstractAkamaiPurgeModule {
 		return publishedBinaries;
 	}
 
+	@Override
 	protected List<Page> getPublishedPages(TransportPackage transportPackage) {
 		List<Page> publishedPages = new ArrayList<>();
 		

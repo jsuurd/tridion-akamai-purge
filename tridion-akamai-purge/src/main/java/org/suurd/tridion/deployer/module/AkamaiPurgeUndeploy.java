@@ -18,23 +18,39 @@ import com.tridion.deployer.Processor;
 import com.tridion.transport.transportpackage.PageKey;
 import com.tridion.transport.transportpackage.TransportPackage;
 
+/**
+ * SDL Deployer module which will send a purge request to the Akamai Content
+ * Control Utility API when un-deploying content.
+ * 
+ * @author jsuurd
+ */
 public class AkamaiPurgeUndeploy extends AbstractAkamaiPurgeModule {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AkamaiPurgeUndeploy.class);
 
 	private ContentServiceClient contentServiceClient;
 
+	/**
+	 * Constructs an Akamai purge un-deploy module with the specified configuration
+	 * and processor.
+	 * 
+	 * @param config the configuration
+	 * @param processor the processor
+	 * @throws ConfigurationException if an error occurs processing the configuration
+	 */
 	public AkamaiPurgeUndeploy(Configuration config, Processor processor) throws ConfigurationException {
 		super(config, processor);
 		
 		contentServiceClient = new ODataV2ContentServiceClient();
 	}
 
+	@Override
 	protected List<BinaryVariant> getPublishedBinaries(TransportPackage transportPackage) {
 		// Binaries are not part of the transport package when unpublishing 
 		return Collections.emptyList();
 	}
 
+	@Override
 	protected List<Page> getPublishedPages(TransportPackage transportPackage) {
 		List<Page> pages = new ArrayList<>();
 		

@@ -9,16 +9,30 @@ import org.suurd.akamai.ccu.client.provider.ConfigurationProvider;
 import com.tridion.configuration.Configuration;
 import com.tridion.configuration.ConfigurationException;
 
+/**
+ * Class containing configuration properties used by the Akamai CCU client.
+ * 
+ * @author jsuurd
+ */
 public class AkamaiConfiguration implements ConfigurationProvider {
 
 	private org.suurd.akamai.ccu.client.model.Configuration configuration;
 
 	private Domain domain;
 
+	/**
+	 * Constructs an Akamai configuration.
+	 */
 	public AkamaiConfiguration() {
 		super();
 	}
 
+	/**
+	 * Constructs an Akamai configuration with the specified configuration.
+	 * 
+	 * @param config the configuration
+	 * @throws ConfigurationException if an error occurs processing the configuration
+	 */
 	public AkamaiConfiguration(Configuration config) throws ConfigurationException {
 		super();
 		
@@ -50,21 +64,41 @@ public class AkamaiConfiguration implements ConfigurationProvider {
 		}
 	}
 
+	/**
+	 * Gets the CCU configuration.
+	 * 
+	 * @return the configuration
+	 */
 	@Override
 	public org.suurd.akamai.ccu.client.model.Configuration getConfiguration() {
-		return this.configuration;
+		return configuration;
 	}
 
+	/**
+	 * Sets the CCU configuration.
+	 * 
+	 * @param configuration the configuration to set
+	 */
 	public void setConfiguration(org.suurd.akamai.ccu.client.model.Configuration configuration) {
 		this.configuration = configuration;
 	}
 
+	/**
+	 * Gets the CCU domain.
+	 * 
+	 * @return the domain
+	 */
 	public Domain getDomain() {
-		return this.domain;
+		return domain;
 	}
 
-	public void setDomain(Domain ccuDomain) {
-		this.domain = ccuDomain;
+	/**
+	 * Sets the CCU domain.
+	 * 
+	 * @param domain the domain to set
+	 */
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 
 	@Override
