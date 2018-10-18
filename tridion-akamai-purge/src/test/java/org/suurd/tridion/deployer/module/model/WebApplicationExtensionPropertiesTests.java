@@ -19,7 +19,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void isCdnPurgeEnabled_WithPropertyTrue_ShouldReturnTrue() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ENABLED_KEY, "True");
+		extensionProperties.put("CdnPurgeEnabled", "True");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		boolean isCdnPurgeEnabled = webApplicationExtensionProperties.isCdnPurgeEnabled();
@@ -30,7 +30,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void isCdnPurgeEnabled_WithPropertyFalse_ShouldReturnFalse() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ENABLED_KEY, "False");
+		extensionProperties.put("CdnPurgeEnabled", "False");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		boolean isCdnPurgeEnabled = webApplicationExtensionProperties.isCdnPurgeEnabled();
@@ -61,7 +61,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void isCdnPurgeEnabled_WithInvalidProperty_ShouldReturnFalse() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ENABLED_KEY, "NonBooleanValue");
+		extensionProperties.put("CdnPurgeEnabled", "NonBooleanValue");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		boolean isCdnPurgeEnabled = webApplicationExtensionProperties.isCdnPurgeEnabled();
@@ -72,7 +72,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void getCdnPurgeItems_WithPropertyBinaries_ShouldReturnBinaries() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ITEMS_KEY, "Binaries");
+		extensionProperties.put("CdnPurgeItems", "Binaries");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		CdnPurgeItems cdnPurgeItems = webApplicationExtensionProperties.getCdnPurgeItems();
@@ -83,7 +83,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void getCdnPurgeItems_WithPropertyPages_ShouldReturnPages() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ITEMS_KEY, "Pages");
+		extensionProperties.put("CdnPurgeItems", "Pages");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		CdnPurgeItems cdnPurgeItems = webApplicationExtensionProperties.getCdnPurgeItems();
@@ -114,7 +114,7 @@ public class WebApplicationExtensionPropertiesTests {
 	@Test
 	public void getCdnPurgeItems_WithInvalidProperty_ShouldThrowIllegalArgumentException() {
 		Map<String, String> extensionProperties = new HashMap<>();
-		extensionProperties.put(WebApplicationExtensionProperties.CDN_PURGE_ITEMS_KEY, "NonEnumValue");
+		extensionProperties.put("CdnPurgeItems", "NonEnumValue");
 		
 		WebApplicationExtensionProperties webApplicationExtensionProperties = new WebApplicationExtensionProperties(extensionProperties);
 		

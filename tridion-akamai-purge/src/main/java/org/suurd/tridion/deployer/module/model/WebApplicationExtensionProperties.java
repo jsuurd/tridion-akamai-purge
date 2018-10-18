@@ -9,13 +9,13 @@ import java.util.Map;
  */
 public class WebApplicationExtensionProperties {
 
-	protected final static String CDN_PURGE_ENABLED_KEY = "CdnPurgeEnabled";
+	private final static String CDN_PURGE_ENABLED_KEY = "CdnPurgeEnabled";
 
-	protected final static String CDN_PURGE_ITEMS_KEY = "CdnPurgeItems";
+	private final static String CDN_PURGE_ITEMS_KEY = "CdnPurgeItems";
 
-	protected final static boolean DEFAULT_CDN_PURGE_ENABLED_VALUE = true;
+	private final static boolean DEFAULT_CDN_PURGE_ENABLED_VALUE = true;
 
-	protected final static CdnPurgeItems DEFAULT_CDN_PURGE_ITEMS_VALUE = CdnPurgeItems.All;
+	private final static CdnPurgeItems DEFAULT_CDN_PURGE_ITEMS_VALUE = CdnPurgeItems.All;
 
 	private Map<String, String> extensionProperties;
 
