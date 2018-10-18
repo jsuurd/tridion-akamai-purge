@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Configuration Version="8.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schemas/cd_ambient_conf.xsd">
+
+    <Security OAuthEnabled="true">
+        <RequestValidator>com.sdl.web.oauth.validator.OAuth2RequestValidator</RequestValidator>
+        <AuthenticationServer>
+            <SharedSecret>sample_passphrase</SharedSecret>
+        </AuthenticationServer>
+        <Rules Enabled="true"/>
+    </Security>
+
+    <ExcludedPaths/>
+
+    <Cartridges/>
+
+</Configuration>

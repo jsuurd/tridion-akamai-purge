@@ -1,29 +1,19 @@
-# README
+# Akamai Purge Module for Tridion
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Akamai Purge Module for the SDL Web/Tridion Content Deployer micro-service.
 
-### What is this repository for?
+## Description
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+The Tridion Content Deployer can be extended to send purge request for web resources cached by a Content Delivery Network (CDN). This project provides a basic implementation of a deployer module which sends purge request to the [Akamai Content Control Utility API][1]. The implementation can be used as-is or serve as an example how to implement such clients.
 
-### How do I get set up?
+## Dependencies
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* SDL Web 8.1.0
+* SDL Hotfix CD_8.1.0.1597 
 
-### Contribution guidelines
+This project depends on proprietary libraries that are not publicly available. Use the `Install-LocalDependencies.ps1` script to install these dependencies to the local Maven repository.
 
-* Writing tests
-* Code review
-* Other guidelines
+	.\Install-LocalDependencies.ps1 -Path <path-to-tridion-jars> 
 
-### Who do I talk to?
 
-* Repo owner or admin
-* Other community or team contact
+[1]: https://developer.akamai.com/api/purge/ccu-v2/overview.html

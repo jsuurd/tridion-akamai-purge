@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployer Version="8.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schemas/cd_deployer_conf.xsd">
+
+    <Processors>
+        <Processor Action="Deploy" Class="com.tridion.deployer.Processor">
+            <Module  Type="SchemaDeploy" Class="com.tridion.deployer.modules.SchemaDeploy"/>
+            <Module Type="PageDeploy" Class="com.tridion.deployer.modules.PageDeploy">
+                <Transformer Class="com.tridion.deployer.TCDLTransformer"/>
+            </Module>
+            <Module Type="BinaryDeploy" Class="com.tridion.deployer.modules.BinaryDeploy"/>
+            <Module Type="ComponentDeploy" Class="com.tridion.deployer.modules.ComponentDeploy"/>
+            <Module Type="TemplateDeploy" Class="com.tridion.deployer.modules.TemplateDeploy"/>
+            <Module Type="PublicationDeploy" Class="com.tridion.deployer.modules.PublicationDeploy"/>
+            <Module Type="TaxonomyDeploy" Class="com.tridion.deployer.modules.TaxonomyDeploy"/>
+            <Module Type="ComponentPresentationDeploy" Class="com.tridion.deployer.modules.ComponentPresentationDeploy">
+                <Transformer Class="com.tridion.deployer.TCDLTransformer"/>
+            </Module>
+            <Module Type="StructureGroupDeploy" Class="com.tridion.deployer.modules.StructureGroupDeploy"/>
+            <Module Type="AkamaiPurgeDeploy" Class="org.suurd.tridion.deployer.module.AkamaiPurgeDeploy">
+                <AkamaiCcuClient
+                    BaseAuthority="test-base-authority"
+                    QueuesEndpoint="/ccu/v2/queues/default"
+                    AccessToken="test-access-token"
+                    ClientToken="test-client-token"
+                    ClientSecret="test-client-secret"
+                    Domain="staging"
+                    ConnectTimeout="20000"
+                    ReadTimeout="20000"
+                    NumberOfRetries="10"/>
+                <WebPurgeType
+                    DefaultPageExtensions=".html,index.html,/index.html"
+                    ExcludeBaseUrlsRegex=".*-origin\..*"/>
+                <WaitForCompletion Enabled="true" MaxWaitTime="600"/>
+                <ContinueOnError Enabled="true"/>
+            </Module>
+        </Processor>
+        <Processor Action="Undeploy" Class="com.tridion.deployer.Processor">
+            <Module Type="PageUndeploy" Class="com.tridion.deployer.modules.PageUndeploy"/>
+            <Module Type="ComponentPresentationUndeploy" Class="com.tridion.deployer.modules.ComponentPresentationUndeploy"/>
+            <Module Type="TaxonomyUndeploy" Class="com.tridion.deployer.modules.TaxonomyUndeploy"/>
+            <Module Type="StructureGroupUndeploy" Class="com.tridion.deployer.modules.StructureGroupUndeploy"/>
+            <Module Type="AkamaiPurgeUndeploy" Class="org.suurd.tridion.deployer.module.AkamaiPurgeUndeploy">
+                <AkamaiCcuClient
+                    BaseAuthority="test-base-authority"
+                    QueuesEndpoint="/ccu/v2/queues/default"
+                    AccessToken="test-access-token"
+                    ClientToken="test-client-token"
+                    ClientSecret="test-client-secret"
+                    Domain="staging"
+                    ConnectTimeout="20000"
+                    ReadTimeout="20000"
+                    NumberOfRetries="10"/>
+                <WebPurgeType
+                    DefaultPageExtensions=".html,index.html,/index.html"
+                    ExcludeBaseUrlsRegex=".*-origin\..*"/>
+                <WaitForCompletion Enabled="true" MaxWaitTime="600"/>
+                <ContinueOnError Enabled="true"/>
+            </Module>
+        </Processor>
+    </Processors>
+
+    <Queue>
+        <Location Path="C:\SDL Web\Work Files\Content Deployer Preview\incoming" WindowSize="20" Workers="10" Cleanup="true" Interval="2s"/>
+        <Location Path="C:\SDL Web\Work Files\Content Deployer Preview\http" WindowSize="10" Workers="10" Cleanup="true" Interval="30s"/>
+    </Queue>
+    
+    <HTTPSReceiver MaxSize="10000000" Location="C:\SDL Web\Work Files\Content Deployer Preview\incoming" InProcessDeploy="true"/>
+
+    <License Location="C:\Program Files\SDL Web\config\cd_licenses.xml"/>
+
+    <TCDLEngine>
+        <Properties/>
+    </TCDLEngine>
+
+</Deployer>
