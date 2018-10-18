@@ -8,7 +8,8 @@ The Tridion Content Deployer can be extended to send purge request for web resou
 
 ## Dependencies
 
-* SDL Web 8.1.0 
+* SDL Web 8.1.0
+* SDL Hotfix CD_8.1.0.1597 
 
 This project depends on proprietary libraries that are not publicly available. Use the `Install-LocalDependencies.ps1` script to install these dependencies to the local Maven repository.
 
