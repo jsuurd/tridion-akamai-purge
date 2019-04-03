@@ -11,9 +11,15 @@ The Tridion Content Deployer can be extended to send purge request for web resou
 * SDL Web 8.1.0
 * SDL Hotfix CD_8.1.0.1597 
 
-This project depends on proprietary libraries that are not publicly available. Use the `Install-LocalDependencies.ps1` script to install these dependencies to the local Maven repository.
+This project depends on proprietary libraries that are not publicly available. Use the install local dependencies script to install these dependencies to the local Maven repository.
 
-	.\Install-LocalDependencies.ps1 -Path <path-to-tridion-jars> 
+Windows:
+
+	.\Install-LocalDependencies.ps1 -Path <path-to-tridion-jars>
+	
+Linux:
+	
+	./install_local_dependencies.sh <path_to_tridion_jars> 
 
 
 [1]: https://developer.akamai.com/api/purge/ccu-v2/overview.html
