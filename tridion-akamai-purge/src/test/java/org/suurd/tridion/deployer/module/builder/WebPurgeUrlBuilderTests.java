@@ -10,7 +10,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.suurd.tridion.content.client.model.Page;
-import org.suurd.tridion.content.client.model.WebResourceItem;
+import org.suurd.tridion.content.client.model.WebResource;
 import org.suurd.tridion.deployer.module.configuration.WebPurgeTypeConfiguration;
 import org.suurd.tridion.discovery.client.ConfigurationDiscoveryServiceClient;
 import org.suurd.tridion.discovery.client.DiscoveryServiceClient;
@@ -29,7 +29,7 @@ public class WebPurgeUrlBuilderTests {
 		List<String> baseUrls = new ArrayList<>();
 		baseUrls.add("http://baseurl.mock:80");
 		
-		List<WebResourceItem> publishedItems = new ArrayList<>();
+		List<WebResource> publishedItems = new ArrayList<>();
 		Page page = new Page();
 		page.setUrl("/path/page.html");
 		publishedItems.add(page);
@@ -60,7 +60,7 @@ public class WebPurgeUrlBuilderTests {
 		List<String> baseUrls = new ArrayList<>();
 		baseUrls.add("http://baseurl.mock:80");
 		
-		List<WebResourceItem> publishedItems = new ArrayList<>();
+		List<WebResource> publishedItems = new ArrayList<>();
 		Page page = new Page();
 		page.setUrl("/path/page.html");
 		publishedItems.add(page);

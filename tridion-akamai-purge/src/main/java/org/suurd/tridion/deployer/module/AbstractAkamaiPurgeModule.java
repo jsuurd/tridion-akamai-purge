@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.suurd.akamai.ccu.client.model.v2.Domain;
 import org.suurd.tridion.content.client.model.BinaryVariant;
 import org.suurd.tridion.content.client.model.Page;
-import org.suurd.tridion.content.client.model.WebResourceItem;
+import org.suurd.tridion.content.client.model.WebResource;
 import org.suurd.tridion.deployer.module.builder.PurgeUrlBuilder;
 import org.suurd.tridion.deployer.module.builder.WebPurgeUrlBuilder;
 import org.suurd.tridion.deployer.module.configuration.AkamaiConfiguration;
@@ -104,7 +104,7 @@ public abstract class AbstractAkamaiPurgeModule extends Module {
 					log().debug("Purge settings [cdnPurgeItems={}]", cdnPurgeItems);
 				}
 				
-				List<WebResourceItem> publishedItems = new ArrayList<>();
+				List<WebResource> publishedItems = new ArrayList<>();
 				if (cdnPurgeItems == CdnPurgeItems.All || cdnPurgeItems == CdnPurgeItems.Binaries) {
 					publishedItems.addAll(getPublishedBinaries(transportPackage));
 				}
