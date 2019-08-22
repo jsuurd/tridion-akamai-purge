@@ -2,7 +2,7 @@ package org.suurd.tridion.deployer.module.builder;
 
 import java.util.List;
 
-import org.suurd.tridion.content.client.model.WebResourceItem;
+import org.suurd.tridion.content.client.model.WebResource;
 
 /**
  * Builder responsible for building a list of URL's to purge.
@@ -19,6 +19,6 @@ public interface PurgeUrlBuilder {
 	 * @param publishedItems the published items
 	 * @return the list of URL's
 	 */
-	List<String> buildUrlsToPurge(int publicationId, List<WebResourceItem> publishedItems);
+	List<String> buildUrlsToPurge(int publicationId, List<WebResource> publishedItems);
 
 }

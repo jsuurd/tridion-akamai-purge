@@ -60,7 +60,7 @@ public class AkamaiPurgeUndeploy extends AbstractAkamaiPurgeModule {
 			if (argument instanceof PageKey) {
 				PageKey pageKey = (PageKey) argument;
 				try {
-					Page page = contentServiceClient.getPage(pageKey.getId());
+					Page page = contentServiceClient.getPage(pageKey.getId().getPublicationId(), pageKey.getId().getItemId());
 					if (page != null) {
 						pages.add(page);
 					}

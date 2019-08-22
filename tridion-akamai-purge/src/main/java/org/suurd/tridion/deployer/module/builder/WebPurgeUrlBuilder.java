@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.suurd.tridion.content.client.model.WebResourceItem;
+import org.suurd.tridion.content.client.model.WebResource;
 import org.suurd.tridion.deployer.module.configuration.WebPurgeTypeConfiguration;
 import org.suurd.tridion.discovery.client.DiscoveryServiceClient;
 
@@ -40,7 +40,7 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 	}
 
 	@Override
-	public List<String> buildUrlsToPurge(int publicationId, List<WebResourceItem> publishedItems) {
+	public List<String> buildUrlsToPurge(int publicationId, List<WebResource> publishedItems) {
 		List<String> baseUrls = discoveryClientFacade.getWebApplicationBaseUrls(publicationId);
 		filterBaseUrlsToExclude(baseUrls);
 		if (baseUrls.isEmpty()) {
@@ -62,11 +62,11 @@ public class WebPurgeUrlBuilder implements PurgeUrlBuilder {
 		}
 	}
 
-	protected List<String> buildUrlsToPurge(List<String> baseUrls, List<WebResourceItem> publishedItems) {
+	protected List<String> buildUrlsToPurge(List<String> baseUrls, List<WebResource> publishedItems) {
 		List<String> urls = new ArrayList<>();
 
 		String[] defaultPageExtensions = configuration.getDefaultPageExtensions();
-		for (WebResourceItem publishedItem : publishedItems) {
+		for (WebResource publishedItem : publishedItems) {
 			for (String baseUrl : baseUrls) {
 				String url = baseUrl + publishedItem.getUrl();
 				urls.add(url);

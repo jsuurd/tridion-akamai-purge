@@ -50,7 +50,8 @@ public class AkamaiPurgeDeploy extends AbstractAkamaiPurgeModule {
 		if (binaryMetaData != null) {
 			for (com.tridion.transport.transportpackage.Binary binary : binaryMetaData.getBinaries()) {
 				BinaryVariant publishedBinary = new BinaryVariant();
-				publishedBinary.setBinaryId(binary.getId());
+				publishedBinary.setPublicationId(binary.getId().getPublicationId());
+				publishedBinary.setBinaryId(binary.getId().getItemId());
 				publishedBinary.setUrl(binary.getURLPath());
 				publishedBinaries.add(publishedBinary);
 			}
@@ -67,7 +68,8 @@ public class AkamaiPurgeDeploy extends AbstractAkamaiPurgeModule {
 		if (pageMetadata != null) {
 			for (com.tridion.transport.transportpackage.Page page : pageMetadata.getPages()) {
 				Page publishedPage = new Page();
-				publishedPage.setItemId(page.getId());
+				publishedPage.setPublicationId(page.getId().getPublicationId());
+				publishedPage.setItemId(page.getId().getItemId());
 				publishedPage.setUrl(page.getURLPath());
 				publishedPages.add(publishedPage);
 			}
