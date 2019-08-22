@@ -4,7 +4,7 @@
 	<groupId>org.suurd.tridion</groupId>
 	<artifactId>tridion-akamai-purge</artifactId>
 	<packaging>jar</packaging>
-	<version>1.1.1-SNAPSHOT</version>
+	<version>1.1.0</version>
 	<name>Tridion Akamai Purge Module</name>
 	<url>https://bitbucket.org/jsuurd/tridion-akamai-purge</url>
 
