@@ -18,6 +18,7 @@ import org.suurd.akamai.ccu.client.model.v2.PurgeStatusResponse;
 import org.suurd.akamai.ccu.client.model.v2.Type;
 import org.suurd.akamai.ccu.client.provider.ApacheHttpTransportProvider;
 import org.suurd.akamai.ccu.client.provider.ConfigurationProvider;
+import org.suurd.akamai.ccu.client.provider.HttpTransportProvider;
 
 /**
  * Implementation of the <code>AkamaiCcuClientFacade</code> interface using the
@@ -37,9 +38,20 @@ public class AkamaiCcuV2ClientFacade implements AkamaiCcuClientFacade {
 	 * @param configurationProvider the configuration provider
 	 */
 	public AkamaiCcuV2ClientFacade(ConfigurationProvider configurationProvider) {
+		this(configurationProvider, new ApacheHttpTransportProvider());
+	}
+
+	/**
+	 * Constructs an Akamai CCU V2 client facade with the specified configuration provider
+	 * and http transport provider.
+	 * 
+	 * @param configurationProvider the configuration provider
+	 * @param httpTransportProvider the http transport provider
+	 */
+	AkamaiCcuV2ClientFacade(ConfigurationProvider configurationProvider, HttpTransportProvider httpTransportProvider) {
 		super();
 		
-		this.ccuClient = new CcuV2Client(configurationProvider, new GoogleHttpClientEdgeGridFacade(configurationProvider, new ApacheHttpTransportProvider()));
+		this.ccuClient = new CcuV2Client(configurationProvider, new GoogleHttpClientEdgeGridFacade(configurationProvider, httpTransportProvider));
 	}
 
 	@Override
